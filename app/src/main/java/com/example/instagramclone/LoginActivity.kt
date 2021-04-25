@@ -15,6 +15,9 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        loginEmailEditText.isEnabled = true
+        loginPasswordEditText.isEnabled = true
         
         loginEmailEditText.addTextChangedListener(object: TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -41,14 +44,19 @@ class LoginActivity : AppCompatActivity() {
         val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
         loginButton.setOnClickListener {
+            loginEmailEditText.isEnabled = false
+            loginPasswordEditText.isEnabled = false
             firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener{task ->
                     if (task.isSuccessful){
                         val intent: Intent = Intent(this, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
                         startActivity(intent)
+                        finish()
                     }
                 }.addOnFailureListener{exception ->
                     var message: String = ""
+                    loginEmailEditText.isEnabled = true
+                    loginPasswordEditText.isEnabled = true
                     message = when (exception) {
                         is FirebaseAuthInvalidCredentialsException -> "Incorrect password for $email"
                         is FirebaseNetworkException -> "Unknown network error"
