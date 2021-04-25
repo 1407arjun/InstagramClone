@@ -9,7 +9,7 @@
         <item name="editTextBackground">@color/gray_dark</item>
         <item name="editTextStrokeColor">@color/gray_darker</item>
         <item name="textViewStrokeColor">@color/gray_27</item>
-        <item name="disabledButtonColor">@color/blue_dark</item>
+        <item name="disabledButtonColor">@color/blue_darker</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>

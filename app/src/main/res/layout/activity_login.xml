@@ -59,6 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
+            android:backgroundTint="@color/button_bg_selector"
             android:enabled="false"
             android:padding="16dp"
             android:text="@string/login_text"
