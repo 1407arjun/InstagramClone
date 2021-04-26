@@ -3,4 +3,5 @@
     <attr name="editTextStrokeColor" format="color"/>
     <attr name="textViewStrokeColor" format="color"/>
     <attr name="disabledButtonColor" format="color"/>
+    <attr name="loadingButtonColor" format="color"/>
 </resources>

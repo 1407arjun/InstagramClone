@@ -4,4 +4,5 @@
     <string name="login_pwd">Password</string>
     <string name="login_text">Log In</string>
     <string name="login_ask">Don\'t have an account? <font color="#000D3D"><b>Sign up.</b></font></string>
+    <string name="help_signin">Forgot your login details? <font color="#000D3D"><b>Get help logging in.</b></font></string>
 </resources>

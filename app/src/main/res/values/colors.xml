@@ -8,11 +8,14 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="blue_medium">#3897f1</color>
+    <color name="blue_4">#4CB5F9</color>
     <color name="blue_light">#C5E0FB</color>
     <color name="blue_dark">#000D3D</color>
+    <color name="blue_1">#1F588C</color>
     <color name="blue_darker">#1C4D77</color>
     <color name="gray_light">#FAFAFA</color>
-    <color name="gray_medium">#E4E4E4</color>
+    <color name="gray_lighter">#E4E4E4</color>
+    <color name="gray_medium">#B7B7B7</color>
     <color name="gray_dark">#212121</color>
     <color name="gray_darker">#121212</color>
     <color name="gray_27">#272727</color>

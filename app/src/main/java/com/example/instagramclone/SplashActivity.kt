@@ -17,6 +17,8 @@ class SplashActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
 
+        FirebaseAuth.getInstance().signOut()
+
         Handler().postDelayed({
             intent = if (FirebaseAuth.getInstance().currentUser == null) {
                 Intent(this, LoginActivity::class.java)

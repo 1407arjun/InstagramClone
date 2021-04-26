@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="208dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="64dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -19,7 +19,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/text_logo" />
 
+    <TextView
+        android:id="@+id/helpSigninTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="14dp"
+        android:text="@string/help_signin"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -39,7 +51,7 @@
             android:ems="10"
             android:hint="@string/login_uid"
             android:inputType="textEmailAddress"
-            android:padding="16dp"
+            android:padding="14dp"
             android:textSize="14sp" />
 
         <EditText
@@ -51,22 +63,41 @@
             android:ems="10"
             android:hint="@string/login_pwd"
             android:inputType="textPassword"
-            android:padding="16dp"
+            android:padding="14dp"
             android:textSize="14sp" />
 
-        <Button
-            android:id="@+id/loginButton"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:backgroundTint="@color/button_bg_selector"
-            android:enabled="false"
-            android:padding="16dp"
-            android:text="@string/login_text"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            android:textStyle="normal" />
+            android:layout_height="match_parent"
+            android:layout_margin="8dp">
+
+            <Button
+                android:id="@+id/loginButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/button_bg_selector"
+                android:elevation="0dp"
+                android:enabled="false"
+                android:padding="14dp"
+                android:text="@string/login_text"
+                android:textAllCaps="false"
+                android:textSize="14sp"
+                android:textStyle="normal"
+                app:cornerRadius="4dp" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animationView"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:elevation="8dp"
+                android:padding="2dp"
+                android:visibility="gone"
+                app:lottie_autoPlay="false"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/login_loading" />
+
+        </FrameLayout>
+
     </LinearLayout>
 
     <TextView
@@ -74,10 +105,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/text_view_background"
-        android:padding="16dp"
+        android:padding="14dp"
         android:text="@string/login_ask"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
