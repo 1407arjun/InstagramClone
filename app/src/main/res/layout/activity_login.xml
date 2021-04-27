@@ -50,21 +50,31 @@
             android:background="@drawable/edit_text_background"
             android:ems="10"
             android:hint="@string/login_uid"
-            android:inputType="textEmailAddress"
+            android:inputType="textShortMessage|textAutoCorrect|textEmailAddress"
             android:padding="14dp"
             android:textSize="14sp" />
 
-        <EditText
-            android:id="@+id/loginPasswordEditText"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:background="@drawable/edit_text_background"
-            android:ems="10"
             android:hint="@string/login_pwd"
-            android:inputType="textPassword"
-            android:padding="14dp"
-            android:textSize="14sp" />
+            android:background="@drawable/edit_text_background"
+            android:textColorHint="@android:color/hint_foreground_material_light"
+            app:endIconDrawable="@drawable/ic_toggle_pwd"
+            app:endIconMode="password_toggle">
+
+            <EditText
+                android:id="@+id/loginPasswordEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:padding="14dp"
+                android:textSize="14sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <FrameLayout
             android:layout_width="match_parent"
