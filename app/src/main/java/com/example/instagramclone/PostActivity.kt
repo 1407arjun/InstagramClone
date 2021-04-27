@@ -86,7 +86,7 @@ class PostActivity : AppCompatActivity() {
                 reference.child(postId).setValue(map)
 
                 /*reference = FirebaseDatabase.getInstance().reference.child("HashTags")
-                //var hashTags: List<String> = description.getHashTags()
+                //var hashTags: ArrayList<String> = description.getHashTags()
                 if (!hashTags.isEmpty()){
                     for (tag: String in hashTags){
                         map.clear()
