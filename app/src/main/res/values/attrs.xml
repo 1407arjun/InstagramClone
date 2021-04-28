@@ -4,4 +4,5 @@
     <attr name="textViewStrokeColor" format="color"/>
     <attr name="disabledButtonColor" format="color"/>
     <attr name="loadingButtonColor" format="color"/>
+    <attr name="colorPrimaryInverse" format="color"/>
 </resources>

@@ -4,7 +4,17 @@
     <string name="login_pwd">Password</string>
     <string name="login_text">Log In</string>
     <string name="login_ask">Don\'t have an account? <font color="#000D3D"><b>Sign up.</b></font></string>
+    <string name="register_ask">Already have an account? <font color="#000D3D"><b>Log in.</b></font></string>
     <string name="help_signin">Forgot your login details? <font color="#000D3D"><b>Get help logging in.</b></font></string>
     <string name="new_post">New Post</string>
     <string name="search">Search</string>
+    <string name="phone">Phone</string>
+    <string name="email">Email</string>
+    <string name="next">Next</string>
+    <string name="phone_info">You may receive SMS updates from Instagram and can opt out at any time</string>
+    <string name="welcome">WELCOME TO INSTAGRAM,\narjun140702</string>
+    <string name="welcome_msg">Find people to follow and start sharing photos. You can change your username anytime.</string>
+    <string name="change_username">Change Username</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
