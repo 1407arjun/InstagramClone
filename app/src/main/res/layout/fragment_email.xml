@@ -37,38 +37,20 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <FrameLayout
+        <Button
+            android:id="@+id/nextButton"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:layout_marginEnd="8dp">
-
-            <Button
-                android:id="@+id/nextButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/button_bg_selector"
-                android:elevation="0dp"
-                android:enabled="false"
-                android:padding="14dp"
-                android:text="@string/next"
-                android:textAllCaps="false"
-                android:textSize="14sp"
-                android:textStyle="normal"
-                app:cornerRadius="4dp" />
-
-            <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/animationView"
-                android:layout_width="match_parent"
-                android:layout_height="58dp"
-                android:elevation="8dp"
-                android:padding="2dp"
-                android:visibility="gone"
-                app:lottie_autoPlay="false"
-                app:lottie_loop="true"
-                app:lottie_rawRes="@raw/login_loading" />
-
-        </FrameLayout>
+            android:backgroundTint="@color/button_bg_selector"
+            android:elevation="0dp"
+            android:enabled="false"
+            android:padding="14dp"
+            android:text="@string/next"
+            android:textAllCaps="false"
+            android:textSize="14sp"
+            android:textStyle="normal"
+            app:cornerRadius="4dp" />
 
     </LinearLayout>
 

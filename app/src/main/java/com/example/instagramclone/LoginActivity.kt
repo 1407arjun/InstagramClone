@@ -24,7 +24,6 @@ class LoginActivity : AppCompatActivity() {
         loginEmailEditText.isEnabled = true
         loginPasswordEditText.isEnabled = true
         loginButton.isEnabled = false
-        //animationView.layoutParams.height = loginButton.layoutParams.height
         animationView.visibility = View.GONE
         
         loginEmailEditText.addTextChangedListener(object: TextWatcher{
@@ -35,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
             override fun afterTextChanged(s: Editable?) {}
-        });
+        })
 
         loginPasswordEditText.addTextChangedListener(object: TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -45,7 +44,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
             override fun afterTextChanged(s: Editable?) {}
-        });
+        })
 
         loginButton.setOnClickListener {
             loginButton.text = ""
