@@ -49,6 +49,7 @@ public class EmailFragment extends Fragment {
             Intent intent = new Intent(getContext(), DetailsActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             intent.putExtra("details", emailEditText.getText().toString());
+            startActivity(intent);
         });
 
         return view;

@@ -58,9 +58,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:hint="@string/login_pwd"
             android:background="@drawable/edit_text_background"
-            android:textColorHint="@android:color/hint_foreground_material_light"
+            android:hint="@string/login_pwd"
             app:endIconDrawable="@drawable/ic_toggle_pwd"
             app:endIconMode="password_toggle">
 

@@ -34,7 +34,6 @@
             android:layout_margin="8dp"
             android:background="@drawable/edit_text_background"
             android:hint="@string/fullname"
-            android:textColorHint="@android:color/hint_foreground_material_light"
             app:endIconDrawable="@drawable/ic_close"
             app:endIconMode="clear_text">
 
@@ -44,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:ems="10"
-                android:inputType="textPassword"
+                android:inputType="textAutoCorrect|textPersonName|textCapWords"
                 android:padding="14dp"
                 android:textSize="14sp" />
 
@@ -57,7 +56,6 @@
             android:layout_margin="8dp"
             android:background="@drawable/edit_text_background"
             android:hint="@string/login_pwd"
-            android:textColorHint="@android:color/hint_foreground_material_light"
             app:boxStrokeErrorColor="@null"
             app:endIconDrawable="@drawable/ic_toggle_pwd"
             app:endIconMode="password_toggle"
@@ -127,7 +125,7 @@
         android:id="@+id/noSyncTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="14dp"
+        android:padding="20dp"
         android:text="@string/name_info"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"

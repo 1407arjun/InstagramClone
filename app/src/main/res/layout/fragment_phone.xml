@@ -21,7 +21,6 @@
             android:layout_margin="8dp"
             android:background="@drawable/edit_text_background"
             android:hint="@string/phone"
-            android:textColorHint="@android:color/hint_foreground_material_light"
             app:endIconDrawable="@drawable/ic_close"
             app:endIconMode="clear_text">
 
