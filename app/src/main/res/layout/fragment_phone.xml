@@ -31,6 +31,7 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:ems="10"
+                android:enabled="false"
                 android:inputType="phone"
                 android:padding="14dp"
                 android:textSize="14sp" />

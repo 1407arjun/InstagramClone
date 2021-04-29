@@ -49,7 +49,6 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/button_bg_selector"
                 android:elevation="0dp"
-                android:enabled="false"
                 android:padding="14dp"
                 android:text="@string/next"
                 android:textAllCaps="false"

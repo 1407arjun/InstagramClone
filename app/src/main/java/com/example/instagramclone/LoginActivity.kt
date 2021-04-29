@@ -62,6 +62,7 @@ class LoginActivity : AppCompatActivity() {
                 .addOnCompleteListener{task ->
                     if (task.isSuccessful){
                         animationView.visibility = View.GONE
+                        animationView.cancelAnimation()
                         loginButton.backgroundTintList = getColorStateList(R.color.button_bg_selector)
                         loginButton.text = getString(R.string.login_text)
                         val intent: Intent = Intent(this, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -72,6 +73,7 @@ class LoginActivity : AppCompatActivity() {
                     loginEmailEditText.isEnabled = true
                     loginPasswordEditText.isEnabled = true
                     animationView.visibility = View.GONE
+                    animationView.cancelAnimation()
                     loginButton.backgroundTintList = getColorStateList(R.color.button_bg_selector)
                     loginButton.text = getString(R.string.login_text)
                     loginButton.isEnabled = true

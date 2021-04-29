@@ -10,13 +10,18 @@ import com.example.instagramclone.Fragments.DetailsFragment;
 
 public class DetailsActivity extends AppCompatActivity {
 
+    static String details;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-        String details = getIntent().getStringExtra("details");
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.details_fragment_container, new DetailsFragment()).commit();
+        details = getIntent().getStringExtra("details");
+        DetailsFragment detailsFragment = new DetailsFragment();
+        Bundle args = new Bundle();
+        args.putString("email", details);
+        detailsFragment.setArguments(args);
+        getSupportFragmentManager().beginTransaction().replace(R.id.details_fragment_container, detailsFragment).commit();
     }
 }
