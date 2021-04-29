@@ -19,9 +19,16 @@ public class UsernameFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_username, container, false);
         Button nextButton = view.findViewById(R.id.nextButton);
         TextView changeUsernameTextView = view.findViewById(R.id.changeUsernameTextView);
+        TextView welcomeTextView = view.findViewById(R.id.welcomeTextView);
+
+        Bundle args = getArguments();
+        String username = args.getString("username");
+
+        welcomeTextView.setText(getString(R.string.welcome) + username);
 
         nextButton.setOnClickListener(v -> {
             startActivity(new Intent(getContext(), MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));

@@ -28,13 +28,14 @@ class SearchFragment : Fragment() {
         searchRecyclerView.layoutManager = LinearLayoutManager(context)
 
         searchAdapter = UserAdapter(searchList, context, true)
+        searchRecyclerView.adapter = searchAdapter
         readUsers()
 
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
     private fun readUsers() {
-        var reference: DatabaseReference = Firebase.database.reference.child("Users")
+        val reference: DatabaseReference = Firebase.database.reference.child("Users")
         reference.addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (searchEditText.text.toString().isNullOrEmpty()){

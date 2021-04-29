@@ -32,17 +32,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:background="@drawable/edit_text_background"
-            android:hint="@string/fullname"
             app:endIconDrawable="@drawable/ic_close"
-            app:endIconMode="clear_text">
+            app:endIconMode="clear_text"
+            app:hintEnabled="false">
 
             <EditText
                 android:id="@+id/nameEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
+                android:background="@drawable/edit_text_background"
                 android:ems="10"
+                android:hint="@string/fullname"
                 android:inputType="textAutoCorrect|textPersonName|textCapWords"
                 android:padding="14dp"
                 android:textSize="14sp" />

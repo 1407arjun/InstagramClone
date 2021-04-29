@@ -7,17 +7,16 @@ import android.os.Bundle;
 import android.view.inputmethod.InputMethodManager;
 
 import com.example.instagramclone.Fragments.DetailsFragment;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class DetailsActivity extends AppCompatActivity {
-
-    static String details;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-        details = getIntent().getStringExtra("details");
+        String details = getIntent().getStringExtra("details");
         DetailsFragment detailsFragment = new DetailsFragment();
         Bundle args = new Bundle();
         args.putString("email", details);

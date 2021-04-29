@@ -41,6 +41,8 @@ public class DetailsFragment extends Fragment {
     EditText nameEditText, passwordEditText;
     TextInputLayout passwordLayout;
     LottieAnimationView animationView;
+    FirebaseAuth auth;
+    DatabaseReference reference;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,6 +51,10 @@ public class DetailsFragment extends Fragment {
 
         Bundle args = getArguments();
         String email = args.getString("email");
+        String username = email.split("@")[0];
+
+        auth = FirebaseAuth.getInstance();
+        reference = FirebaseDatabase.getInstance().getReference();
 
         syncButton = view.findViewById(R.id.syncButton);
         noSyncText = view.findViewById(R.id.noSyncTextView);
@@ -125,7 +131,7 @@ public class DetailsFragment extends Fragment {
             String password = passwordEditText.getText().toString();
             nameEditText.setEnabled(false);
             passwordEditText.setEnabled(false);
-            addUser(name, email, password);
+            addUser(username, name, email, password);
         });
 
         noSyncText.setOnClickListener(v -> {
@@ -139,33 +145,45 @@ public class DetailsFragment extends Fragment {
             String password = passwordEditText.getText().toString();
             nameEditText.setEnabled(false);
             passwordEditText.setEnabled(false);
-            addUser(name, email, password);
+            addUser(username, name, email, password);
         });
         return view;
     }
 
-    public void addUser(String name, String email, String password){
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password).addOnCompleteListener(getActivity(), authResultTask -> {
+    public void addUser(String username, String name, String email, String password){
+        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(getActivity(), authResultTask -> {
             if (authResultTask.isSuccessful()) {
-                Log.i("testxx", "hry");
-                Log.i("currentuser", FirebaseAuth.getInstance().getCurrentUser().getUid());
                 Map<String, Object> entry = new HashMap<>();
                 entry.put("name", name);
                 entry.put("email", email);
                 entry.put("id", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                entry.put("imgurl", "");
+                entry.put("username", username);
 
-                DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-
-                reference.child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(entry).addOnCompleteListener(getActivity(), task -> {
+                reference.child("Users").child(auth.getCurrentUser().getUid()).setValue(entry).addOnCompleteListener(getActivity(), task -> {
                     if (task.isSuccessful()) {
                         animationView.setVisibility(View.GONE);
                         animationView.cancelAnimation();
                         syncButton.setBackgroundTintList(ContextCompat.getColorStateList(getContext(), R.color.button_bg_selector));
                         syncButton.setText(getString(R.string.sync_contacts_2));
-                        getFragmentManager().beginTransaction().replace(R.id.details_fragment_container, new UsernameFragment()).commit();
+                        UsernameFragment usernameFragment = new UsernameFragment();
+                        Bundle args = new Bundle();
+                        args.putString("username", username);
+                        usernameFragment.setArguments(args);
+                        getFragmentManager().beginTransaction().replace(R.id.details_fragment_container, usernameFragment).commit();
                     }
 
-                }).addOnFailureListener(getActivity(), e -> Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show());
+                }).addOnFailureListener(getActivity(), e -> {
+                    animationView.setVisibility(View.GONE);
+                    animationView.cancelAnimation();
+                    syncButton.setBackgroundTintList(ContextCompat.getColorStateList(getContext(), R.color.button_bg_selector));
+                    syncButton.setText(getString(R.string.sync_contacts_2));
+                    nameEditText.setEnabled(true);
+                    passwordEditText.setEnabled(true);
+                    syncButton.setEnabled(true);
+                    noSyncText.setEnabled(true);
+                    Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                });
             }
         }).addOnFailureListener(getActivity(), e -> {
             animationView.setVisibility(View.GONE);
