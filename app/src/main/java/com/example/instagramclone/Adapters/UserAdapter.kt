@@ -7,12 +7,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.example.instagramclone.Models.User
 import com.example.instagramclone.R
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.squareup.picasso.Picasso
 
 
 class UserAdapter(private val arrayList: ArrayList<User>, private val context: Context?, private val isFragment: Boolean?): RecyclerView.Adapter<UserAdapter.ViewHolder>() {
@@ -33,7 +35,12 @@ class UserAdapter(private val arrayList: ArrayList<User>, private val context: C
 
         holder.searchUsernameText.text = user.getUsername()
         holder.searchNameText.text = user.getName()
-        Picasso.get().load(user.getImgUrl()).placeholder(R.drawable.ic_like_heart_outline).into(holder.searchProfileImageView)
+        if (context != null) {
+            Glide.with(context).load(user.getImgUrl()).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE)
+                .transform(CircleCrop()).placeholder(R.drawable.ic_like_heart_outline)
+                .fallback(R.drawable.ic_person_outline).error(R.drawable.ic_search_outline)
+                .dontAnimate().into(holder.searchProfileImageView)
+        }
     }
 
     override fun getItemCount() = arrayList.size

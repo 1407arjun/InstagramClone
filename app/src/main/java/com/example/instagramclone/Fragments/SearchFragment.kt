@@ -1,6 +1,8 @@
 package com.example.instagramclone.Fragments
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -31,6 +33,20 @@ class SearchFragment : Fragment() {
         searchRecyclerView.adapter = searchAdapter
         readUsers()
 
+        searchEditText.addTextChangedListener(object: TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                searchUser(s.toString())
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                TODO("Not yet implemented")
+            }
+
+        })
+
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
@@ -55,5 +71,29 @@ class SearchFragment : Fragment() {
             }
 
         })
+    }
+
+    private fun searchUser(key: String){
+        val query: Query = Firebase.database.reference.child("Users").orderByChild("username")
+            .startAt(key).endAt(key + "\uf8ff")
+
+        query.addValueEventListener(object: ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                searchList.clear()
+                for (dataSnapshot: DataSnapshot in snapshot.children){
+                    val user: User? = dataSnapshot.getValue(User::class.java)
+                    if (user != null) {
+                        searchList.add(user)
+                    }
+                }
+                searchAdapter.notifyDataSetChanged()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
+
     }
 }

@@ -93,7 +93,7 @@ class PostActivity : AppCompatActivity() {
                         map["tag"] = tag.toLowerCase()
                         map["postId"] = postId
 
-                        reference.child(tag.toLowerCase()).setValue(map)
+                        reference.child(tag.toLowerCase()).child(postId).setValue(map)
                     }*/
                 progress.dismiss()
                 startActivity(Intent(this, MainActivity::class.java))

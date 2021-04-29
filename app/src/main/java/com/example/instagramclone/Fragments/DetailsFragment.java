@@ -159,6 +159,7 @@ public class DetailsFragment extends Fragment {
                 entry.put("id", FirebaseAuth.getInstance().getCurrentUser().getUid());
                 entry.put("imgurl", "");
                 entry.put("username", username);
+                entry.put("bio", "");
 
                 reference.child("Users").child(auth.getCurrentUser().getUid()).setValue(entry).addOnCompleteListener(getActivity(), task -> {
                     if (task.isSuccessful()) {
